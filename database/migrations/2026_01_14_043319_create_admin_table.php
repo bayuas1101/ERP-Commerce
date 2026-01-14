@@ -11,22 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin', function (Blueprint $table) {
-            $table->id('id_admin');
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->string('username');
-            $table->string('password');
-            $table->string('nama_lengkap');
-            $table->string('nomor_telepon', 20)->nullable();
-            $table->text('alamat')->nullable();
-            $table->timestamps();
+    Schema::create('admin', function (Blueprint $table) {
+        $table->id('id_admin');
+        $table->unsignedBigInteger('user_id')->unique();
+        $table->string('username');
+        $table->string('nama_lengkap');
+        $table->timestamps();
 
-            $table->foreign('user_id')
-                  ->references('id_user')
-                  ->on('users')
-                  ->onDelete('cascade');
+        $table->foreign('user_id')
+            ->references('id_user')
+            ->on('users')
+            ->onDelete('cascade');
+    });
 
-        });
     }
 
     /**

@@ -2,25 +2,27 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
+//Seeder untuk membuat admin default
 class AdminSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run()
+    public function run(): void
     {
-         User::firstOrCreate(
-            ['email' => 'admin@erp.com'],
-            [
-                'name' => 'Admin ERP',
-                'password' => Hash::make('admin123'),
-                'role' => 'admin',
-            ]
-        );
+        $user = User::create([
+            'nama_user' => 'Doni',
+            'email'     => 'admin@erp.com',
+            'password'  => Hash::make('admin123'),
+            'role'      => 'admin',
+        ]);
+
+        Admin::create([
+            'user_id' => $user->id_user,
+            'username' => 'admin',
+            'nama_lengkap' => 'Administrator ERP',
+        ]);
     }
 }

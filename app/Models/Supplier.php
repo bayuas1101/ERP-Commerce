@@ -14,14 +14,15 @@ class Supplier extends Model
 
     protected $fillable = [
         'user_id',
+        "nama_toko",
         'nama_supplier',
         'kontak_person',
         'telepon',
         'alamat',
     ];
 
-    /**
-     * Relasi ke tabel users
+    /*
+     Relasi ke tabel users
      */
     public function user()
     {

@@ -15,18 +15,11 @@ class Admin extends Model
     protected $fillable = [
         'user_id',
         'username',
-        'password',
         'nama_lengkap',
-        'nomor_telepon',
-        'alamat',
     ];
 
-    /**
-     * Relasi ke tabel users
-     */
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id_user');
     }
-
 }
